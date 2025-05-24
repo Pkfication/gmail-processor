@@ -1,0 +1,77 @@
+{
+  "rules": [
+    {
+      "name": "Newsletter Processing",
+      "predicate": "all",
+      "conditions": [
+        {
+          "field": "subject",
+          "predicate": "contains",
+          "value": "business info"
+        },
+        {
+          "field": "from",
+          "predicate": "contains",
+          "value": "noreply@google.com"
+        },
+        {
+          "field": "received_date",
+          "predicate": "less_than",
+          "value": "2 days"
+        }
+      ],
+      "actions": [
+        {
+          "type": "mark_as_read"
+        },
+        {
+          "type": "move_to",
+          "value": "Newsletters"
+        }
+      ]
+    },
+    {
+      "name": "Old Unread Emails",
+      "predicate": "all",
+      "conditions": [
+        {
+          "field": "is_read",
+          "predicate": "equals",
+          "value": "false"
+        },
+        {
+          "field": "received_date",
+          "predicate": "less_than",
+          "value": "7 days"
+        }
+      ],
+      "actions": [
+        {
+          "type": "mark_as_read"
+        }
+      ]
+    },
+    {
+      "name": "Important Emails",
+      "predicate": "any",
+      "conditions": [
+        {
+          "field": "subject",
+          "predicate": "contains",
+          "value": "urgent"
+        },
+        {
+          "field": "subject",
+          "predicate": "contains",
+          "value": "important"
+        }
+      ],
+      "actions": [
+        {
+          "type": "move_to",
+          "value": "Urgent"
+        }
+      ]
+    }
+  ]
+}
