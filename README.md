@@ -22,7 +22,7 @@ This project implements a rule-based email processing system that integrates wit
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone git@github.com:Pkfication/gmail-processor.git
 cd gmail-rule-processor
 ```
 
@@ -121,7 +121,7 @@ Rules are defined in `config/rules.json`. Example:
 Run tests using pytest:
 
 ```bash
-pytest tests/
+python -m pytest tests/ -v
 ```
 
 ## Project Structure
